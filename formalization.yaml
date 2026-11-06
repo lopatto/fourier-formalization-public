@@ -1,0 +1,90 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+version: v0.4
+project:
+  name: Sparse kernels and necessary sampling for binary Walsh matrices
+  description: Finite quantitative sparse-kernel and necessary expected-row bounds for independently
+    subsampled binary Walsh matrices, with uniform asymptotic and recovery/RIP consequences.
+  authors:
+  - Patrick Lopatto
+  license: Apache-2.0
+  responsible_maintainers:
+  - Patrick Lopatto
+classification:
+  arxiv:
+  - math.PR
+  - math.FA
+  msc2020:
+  - 42C10
+  - 60B20
+  - 94A20
+sources:
+- title: An Improved Lower Bound for Sparse Reconstruction from Subsampled Walsh Matrices
+  authors:
+  - Jarosław Błasiok
+  - Patrick Lopatto
+  - Kyle Luh
+  - Jake Marcinek
+  - Shravas Rao
+  id: arXiv:1903.12135v3
+  type: paper
+  location: https://arxiv.org/abs/1903.12135v3
+  relationship: adapts
+  note: Published as Discrete Analysis 2023:3, DOI 10.19086/da.74802. The exact finite statements
+    formalized here follow the local manuscript below.
+- title: Local manuscript of An Improved Lower Bound for Sparse Reconstruction from Subsampled Walsh
+    Matrices
+  authors:
+  - Jarosław Błasiok
+  - Patrick Lopatto
+  - Kyle Luh
+  - Jake Marcinek
+  - Shravas Rao
+  type: paper
+  relationship: formalizes
+  note: Source of the explicit finite constants/error bounds, inclusive Grassmann endpoints, and
+    expanded binary arguments. The manuscript text is not distributed in this package.
+related_formalizations:
+- id: https://github.com/shlomi-perles/subspace-convolution/tree/f9b0a122432aa18f3ce292fc798437c1b5bc2692
+  relationship: adapts
+  note: 'Small Apache-2.0 ordered-basis subspace-counting port from lean/SubspaceConvolution/Coloring/SubspaceCount.lean;
+    attribution retained in FourierFormalization/Counting.lean. Preferred source citation: Shlomo
+    A. Perles and Omri Weinstein, A Fast Algorithm for Subspace Convolution (2026, unpublished).'
+status:
+  scope: All principal conclusions in the local manuscript’s proved binary dyadic regime N=2^n, K=2^k
+    are included, together with exact-decoder and complex-RIP consequences. Sampling independently
+    includes each row; q is its expected cardinality. The finite results assume n>=256, k<=n and
+    min(k,n-k)>=12 log_2 n, with c0=ln(2)/8; recovery/RIP uses fixed 0<delta<1. The sequence lower
+    bound assumes eventual admissibility, diverging dimensions and success bounded away from zero.
+    Prime-field and quoted introductory results are outside the advertised scope. No separate general-K
+    or forall-real-alpha rounding corollary is claimed.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms:
+  - propext
+  - Quot.sound
+  - Classical.choice
+automation:
+  methods:
+  - method: agent
+    models:
+    - GPT-6
+    framework: OpenAI Codex
+    tool_setup: AI-assisted Lean 4 development with Lean/Lake, Mathlib and Lean Beam; parallel proof
+      workers and separate AI-agent statement/definition reviews.
+  notes: Patrick Lopatto is the responsible human maintainer. Proof construction and the independent
+    semantic/type reviews described here used AI agents; no independent human review or other source-author
+    endorsement is claimed.
+fidelity:
+  divergences: The local manuscript specifies the exact finite constants, error bound B(n,k)<=1/n,
+    and inclusive zero/full-dimensional Grassmann bounds used here. The cited public version presents
+    the associated asymptotic Walsh conclusions. The mathematical domain and restrictions are stated
+    in status.scope and Challenge.lean.
+review:
+  status: agent-reviewed
+  reviewers:
+  - Independent OpenAI Codex agents
+  notes: Principal elaborated types, central definitions and critical prerequisite meanings were
+    compared independently with the local manuscript and pinned sources. Compiler, StatementChecks,
+    source and transitive-axiom checks are separate from these semantic reviews. No human review
+    or endorsement is claimed.
+acknowledgements: Lean 4, Mathlib, Lean Beam, and the attributed Perles subspace-counting source.

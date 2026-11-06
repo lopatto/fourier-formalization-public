@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "Paper.finiteKernel",
+    "Paper.uniformKernel",
+    "Paper.finiteRecovery",
+    "Paper.necessarySampling",
+    "Paper.boundedOrthonormalExample",
+    "Paper.finiteDecoderComplex"
+  ],
+  "definition_names": [],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}
